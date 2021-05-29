@@ -17,7 +17,7 @@ Supported method
 
 Method parameter 
 
-    Route::get('namespace', 'callback',  'permission_callback');
+    Route::get('namespace', 'endpoint', 'callback',  'permission_callback');
 
 Example
 
