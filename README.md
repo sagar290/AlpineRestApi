@@ -14,8 +14,15 @@ Supported method
     'UNLINK',
     'HEAD',
 
+
+Method parameter 
+
+    Route::get('namespace', 'callback',  'permission_callback');
+
 Example
 
+	use AlpineRestApi as Route 
+	
     function method($request) {
 	    $name  =  $request['name'];
 		
