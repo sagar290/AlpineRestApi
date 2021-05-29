@@ -12,7 +12,6 @@
  * @license https://www.opensource.org/licenses/mit-license.html MIT License
  */
 
-
 if (!class_exists('AlpineRestApi')) {
     class AlpineRestApi
     {
@@ -76,13 +75,14 @@ if (!class_exists('AlpineRestApi')) {
         {
             foreach (self::$groupEndpoint as $endpoint) {
                 add_action('rest_api_init', function () use ($endpoint) {
+                    var_dump($endpoint['permission_callback']);
                     register_rest_route(
                         $endpoint['namespace'],
                         $endpoint['endpoint'], array(
                             'methods' => $endpoint['method'],
                             'callback' => $endpoint['callback'],
-                            // 'permission_callback' => $endpoint['permission_callback'],
-                            'permission_callback' => '__return_true',
+                            'permission_callback' => $endpoint['permission_callback'] ?? '__return_true',
+                            // 'permission_callback' => '__return_true',
                         ));
                 });
             }
@@ -143,7 +143,7 @@ if (!class_exists('AlpineRestApi')) {
                     $arguments[1], 
                     $arguments[2], 
      
-                    isset($arguments[3])  ?  $arguments[3] : ['self', 'default_permiddion'] 
+                    isset($arguments[3])  ?  $arguments[3] : null
                 );
             }
         }
@@ -167,11 +167,12 @@ if (!class_exists('AlpineRestApi')) {
             return $self->$name;
         }
 
-        public  function default_permiddion() {
+        public  function default_permission() {
             // Restrict endpoint to only users who have the edit_posts capability.
             if ( ! current_user_can( 'edit_posts' ) ) {
                 return new WP_Error( 'rest_forbidden', esc_html__( 'OMG you can not view private data.'), array( 'status' => 401 ) );
             }
+
             return true;
         }
 
