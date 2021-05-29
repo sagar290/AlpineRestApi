@@ -22,31 +22,31 @@ Method parameter
 Example
 
 ``` php    
-	use AlpineRestApi as Route 
-	
-    function method($request) {
-	    $name  =  $request['name'];
-		wp_send_json_success($name, 200);
-    }
+use AlpineRestApi as Route 
 
-    Route::post('namespace/v1', '/addProduct', "method");
+function method($request) {
+    $name  =  $request['name'];
+    wp_send_json_success($name, 200);
+}
+
+Route::post('namespace/v1', '/addProduct', "method");
 ```
 
 You can access this by 
 
 Body
 ``` json	
-    {
-	    "name": "sagar"
-    }
+{
+    "name": "sagar"
+}
 ```    
     POST https://yourdomin.com/wp-json/namespace/v1/addProduct
 Response
 ``` json
-    {
-    
-	    "success":  true,
-	    "data":  "Sagar"
-    
-    }
+{
+
+    "success":  true,
+    "data":  "Sagar"
+
+}
 ```
