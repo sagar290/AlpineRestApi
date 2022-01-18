@@ -75,7 +75,7 @@ if (!class_exists('AlpineRestApi')) {
         {
             foreach (self::$groupEndpoint as $endpoint) {
                 add_action('rest_api_init', function () use ($endpoint) {
-                    var_dump($endpoint['permission_callback']);
+//                     var_dump($endpoint['permission_callback']);
                     register_rest_route(
                         $endpoint['namespace'],
                         $endpoint['endpoint'], array(
