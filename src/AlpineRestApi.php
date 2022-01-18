@@ -1,4 +1,5 @@
 <?php
+namespace Sagar290\RestApi;
 
 /**
  * Register rest api Class

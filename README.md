@@ -22,7 +22,7 @@ Method parameter
 Example
 
 ``` php    
-use AlpineRestApi as Route 
+use Sagar290\RestApi\AlpineRestApi as Route 
 
 function method($request) {
     $name  =  $request['name'];
